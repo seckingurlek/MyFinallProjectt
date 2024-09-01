@@ -2,7 +2,7 @@
 using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
+using System.Collections.Generic; 
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramewok
 {
-    //NuGet entity framework ekledik
+    //NuGetten  entity framework ekledik
     public class EfProductDal : IProductDal
     {
         public void Add(Product entity)
