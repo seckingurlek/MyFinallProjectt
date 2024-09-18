@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Entities
-
+namespace Core.Utilities.Results
 {
-    // IEntity implement eden class bir veritabanı tablosudur
-    public interface IEntity
+    public interface IDataResult<T>:IResult
     {
-
+        T Data { get; }
     }
 }

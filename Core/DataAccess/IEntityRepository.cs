@@ -10,13 +10,13 @@ namespace Core.DataAccess //core diğer katmanları referans almaz
 {
     //generic constrait kısıtlama sadece entity için
     // class: referans tip anlamında, newlenebilen bişi olmalı
-    public interface IEntityRepository<T> where T : class,IEntity,new()
+    public interface IEntityRepository<T> where T : class, IEntity, new()
     {
         //filtreleme çubuğu gibisinden tget ise tek bi filtreleme gerektirdiğinden hepsi ortak
-        List<T> GetAll(Expression<Func<T,bool >> filter =null);
+        List<T> GetAll(Expression<Func<T, bool>> filter = null);
         T Get(Expression<Func<T, bool>> filter);
-        void Add(T entity); 
-        void Update(T entity); 
+        void Add(T entity);
+        void Update(T entity);
         void Delete(T entity);
 
     }
