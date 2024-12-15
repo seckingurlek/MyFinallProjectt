@@ -1,4 +1,4 @@
-
+using Core.Extensions;
 using Autofac.Extensions.DependencyInjection;
 using Autofac;
 using Business.Abstract;
@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Core.Utilities.Security.Encryption;
 using Core.Utilities.IoC;
+using Core.DependencyResolvers;
 
 namespace WebAPI
 {
@@ -27,7 +28,7 @@ namespace WebAPI
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddHttpContextAccessor();
+            
             var configuration = builder.Configuration;
 
             var tokenOptions = configuration.GetSection("TokenOptions").Get<TokenOptions>();
@@ -59,7 +60,9 @@ namespace WebAPI
                 });
             // .NET Core yerine baþka bi ioc için yukarýdaki hareket yapýlýr.
 
-            ServiceTool.Create(builder.Services);
+            builder.Services.AddDependencyResolvers(new ICoreModule[] {
+                  new CoreModule()
+            });
 
             var app = builder.Build();
 
